@@ -19,7 +19,36 @@ class FloatingActionButton: UIButton {
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 5
         layer.shadowOffset = CGSize(width: 0, height: 10)
-
+        addTarget(self, action: #selector(buttonAnimation(_:)), for: .touchDown)
     }
 
+    // IBActionとは違い，addTargetの場合は再利用可能
+    @objc func buttonAnimation(_ sender: FloatingActionButton) {
+        
+        sender.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        
+        // pattern1
+        UIView.animate(withDuration: 0.6,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 0.1,
+                       options: UIView.AnimationOptions.allowAnimatedContent,
+                       animations: {
+                        sender.transform = CGAffineTransform.identity
+                       },
+                       completion: nil)
+        
+        // pattern2
+//        UIView.animate(withDuration: 2.0,
+//                       delay: 0,
+//                       usingSpringWithDamping: 0.2,
+//                       initialSpringVelocity: 6.0,
+//                       options: UIView.AnimationOptions.allowUserInteraction,
+//                       animations: {
+//                        sender.transform = CGAffineTransform.identity
+//                       },
+//                       completion: nil)
+
+    }
+    
 }

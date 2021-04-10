@@ -21,8 +21,7 @@ class ViewController: UIViewController {
         
         //floatingButton.createFloatingActionButton()// UIButtonとした場合,pattern2
     }
-
-
+    
 }
 
 extension ViewController: UITableViewDataSource {
